@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_primary"
+    android:padding="32dp">
+
+    <TextView
+        android:id="@+id/tvLockBadge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:letterSpacing="0.16"
+        android:text="@string/lock_active_label"
+        android:textColor="@color/text_secondary"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/tvLockCountdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tvLockCountdown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="monospace"
+        android:text="00:45:00"
+        android:textColor="@color/text_primary"
+        android:textSize="54sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/tvLockSubtext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvLockBadge" />
+
+    <TextView
+        android:id="@+id/tvLockSubtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/lock_active_subtext"
+        android:textColor="@color/text_muted"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toTopOf="@id/btnEmergencyLock"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvLockCountdown" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEmergencyLock"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_marginBottom="24dp"
+        android:paddingHorizontal="24dp"
+        android:text="@string/btn_emergency"
+        android:textColor="@color/emergency_red"
+        android:textSize="13sp"
+        app:cornerRadius="22dp"
+        app:strokeColor="@color/emergency_red_subtle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

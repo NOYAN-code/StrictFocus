@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">StrictFocus</string>
+    <string name="subtitle_ready">Zero distractions. Unbypassable focus.</string>
+    <string name="select_duration">FOCUS DURATION</string>
+    <string name="btn_start">Start</string>
+    <string name="btn_emergency">Emergency</string>
+    <string name="btn_grant">Grant</string>
+    <string name="permissions_required_title">System Permissions Required</string>
+    <string name="permissions_required_subtitle">All permissions below are required so the lockdown cannot be bypassed or killed by the system.</string>
+
+    <string name="accessibility_service_label">StrictFocus Lockdown Guard</string>
+    <string name="accessibility_service_description">Monitors active windows during a focus session to block Home, Recent Apps, Notification Shade, and Settings tampering until the timer expires.</string>
+
+    <string name="device_admin_label">StrictFocus Anti-Uninstall</string>
+    <string name="device_admin_description">Prevents uninstalling or force-bypassing StrictFocus while a lockdown session is active.</string>
+    <string name="device_admin_disable_warning">Disabling Device Admin will weaken focus lockdown protection.</string>
+
+    <string name="lock_active_label">FOCUS LOCK ACTIVE</string>
+    <string name="lock_active_subtext">Device is locked until the countdown reaches zero.</string>
+    <string name="emergency_confirm_title">5-Minute Emergency Access</string>
+    <string name="emergency_confirm_message">This will unlock your phone for strictly 5 minutes. A non-cancelable background timer will forcefully re-lock your device when 5 minutes expire.</string>
+    <string name="emergency_confirm_action">Unlock for 5 Minutes</string>
+    <string name="emergency_cancel_action">Stay Locked</string>
+
+    <string name="emergency_banner_title">Emergency Window Active</string>
+    <string name="emergency_banner_subtext">Full access granted. Device will auto-lock when the 5:00 timer ends.</string>
+
+    <string name="notif_channel_name">Focus Lockdown Timer</string>
+    <string name="notif_channel_desc">Persistent countdown for active focus lock and 5-minute emergency windows.</string>
+</resources>

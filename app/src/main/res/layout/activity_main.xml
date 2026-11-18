@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_primary"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="32dp">
+
+        <!-- Header -->
+        <TextView
+            android:id="@+id/tvAppTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="-0.02"
+            android:text="@string/app_name"
+            android:textColor="@color/text_primary"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/subtitle_ready"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAppTitle" />
+
+        <!-- Emergency Active Banner (only visible during 5-minute emergency window) -->
+        <LinearLayout
+            android:id="@+id/layoutEmergencyBanner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_card_surface"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSubtitle">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/emergency_banner_title"
+                android:textColor="@color/emergency_red"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvEmergencyCountdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="monospace"
+                android:text="05:00"
+                android:textColor="@color/text_primary"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvEmergencySubtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/emergency_banner_subtext"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Timer Selector Card -->
+        <LinearLayout
+            android:id="@+id/layoutTimerSelector"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/bg_card_surface"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutEmergencyBanner">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.12"
+                android:text="@string/select_duration"
+                android:textColor="@color/text_secondary"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDecrease"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:padding="0dp"
+                    android:text="−5"
+                    android:textColor="@color/text_primary"
+                    android:textSize="15sp"
+                    app:cornerRadius="26dp"
+                    app:strokeColor="@color/border_subtle" />
+
+                <TextView
+                    android:id="@+id/tvSelectedDuration"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="monospace"
+                    android:gravity="center"
+                    android:text="45:00"
+                    android:textColor="@color/text_primary"
+                    android:textSize="48sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnIncrease"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:padding="0dp"
+                    android:text="+5"
+                    android:textColor="@color/text_primary"
+                    android:textSize="15sp"
+                    app:cornerRadius="26dp"
+                    app:strokeColor="@color/border_subtle" />
+            </LinearLayout>
+
+            <!-- Quick Duration Presets -->
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupDurations"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:selectionRequired="false"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip15"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15m"
+                    android:textColor="@color/text_primary"
+                    app:chipBackgroundColor="@color/bg_surface_elevated"
+                    app:chipStrokeColor="@color/border_subtle" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip30"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30m"
+                    android:textColor="@color/text_primary"
+                    app:chipBackgroundColor="@color/bg_surface_elevated"
+                    app:chipStrokeColor="@color/border_subtle" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip45"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="45m"
+                    android:textColor="@color/text_primary"
+                    app:chipBackgroundColor="@color/bg_surface_elevated"
+                    app:chipStrokeColor="@color/border_subtle" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip60"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="60m"
+                    android:textColor="@color/text_primary"
+                    app:chipBackgroundColor="@color/bg_surface_elevated"
+                    app:chipStrokeColor="@color/border_subtle" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip90"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="90m"
+                    android:textColor="@color/text_primary"
+                    app:chipBackgroundColor="@color/bg_surface_elevated"
+                    app:chipStrokeColor="@color/border_subtle" />
+            </com.google.android.material.chip.ChipGroup>
+        </LinearLayout>
+
+        <!-- Primary Start Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStart"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/accent_primary"
+            android:text="@string/btn_start"
+            android:textColor="@color/accent_on_primary"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:cornerRadius="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutTimerSelector" />
+
+        <!-- Subtle Emergency Button (visible on main screen for quick access / status) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEmergencyMain"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/btn_emergency"
+            android:textColor="@color/text_muted"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnStart" />
+
+        <!-- Missing Permissions Onboarding Card -->
+        <LinearLayout
+            android:id="@+id/layoutPermissions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_card_surface"
+            android:orientation="vertical"
+            android:padding="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnEmergencyMain">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/permissions_required_title"
+                android:textColor="@color/text_primary"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="12dp"
+                android:text="@string/permissions_required_subtitle"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:id="@+id/containerPermissionRows"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

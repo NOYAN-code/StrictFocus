@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_primary"
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.16"
+            android:text="@string/lock_active_label"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvOverlayCountdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="monospace"
+            android:text="00:45:00"
+            android:textColor="@color/text_primary"
+            android:textSize="54sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@string/lock_active_subtext"
+            android:textColor="@color/text_muted"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btnOverlayEmergency"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:backgroundTint="@color/emergency_red_subtle"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="10dp"
+            android:text="@string/btn_emergency"
+            android:textAllCaps="false"
+            android:textColor="@color/emergency_red"
+            android:textSize="13sp" />
+    </LinearLayout>
+</FrameLayout>

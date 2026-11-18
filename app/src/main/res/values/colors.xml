@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_primary">#0A0A0C</color>
+    <color name="bg_surface">#141418</color>
+    <color name="bg_surface_elevated">#1E1E24</color>
+    <color name="text_primary">#F4F4F6</color>
+    <color name="text_secondary">#8E8E98</color>
+    <color name="text_muted">#5A5A64</color>
+    <color name="accent_primary">#FFFFFF</color>
+    <color name="accent_on_primary">#0A0A0C</color>
+    <color name="emergency_red">#E5484D</color>
+    <color name="emergency_red_subtle">#2A1517</color>
+    <color name="status_granted">#30A46C</color>
+    <color name="status_missing">#E59A3D</color>
+    <color name="border_subtle">#282830</color>
+</resources>
